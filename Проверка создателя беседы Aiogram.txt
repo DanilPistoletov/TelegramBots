@@ -1,0 +1,7 @@
+check = "\"status\": \"creator\""
+owners = str(await bot.get_chat_member(chat_id, msg.from_user.id))
+if check in owners:
+	owner = msg.from_user.id
+	await bot.send_message(chat_id, owner)
+else:
+	await bot.send_message(chat_id, "ты не мой братик")
