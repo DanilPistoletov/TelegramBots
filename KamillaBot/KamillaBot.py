@@ -1,11 +1,12 @@
 from aiogram import Bot, Dispatcher, executor, types
 
-bot = Bot(token='')
+bot = Bot(token='ТОКЕН')
 DanilID = 1886347358
 dp = Dispatcher(bot)
 banlist = []
 gbl = []
 mutelist = []
+adminlist = []
 
 @dp.message_handler()
 async def sms(msg: types.Message):
@@ -210,7 +211,7 @@ async def sms(msg: types.Message):
                     await bot.send_message(chat_id, "Пью энергетек как настоящая альтушка а вы что делаити")
                     await bot.send_photo(chat_id, photo="https://sun9-58.userapi.com/impg/OL6E5NRRJUA3oWuvzu9jjeXhu5TetILIiZxzNA/cwaWgzxDgIg.jpg?size=960x1280&quality=96&sign=f4f3b326fb43539ca39d569138875e6f&type=album")
             if "!версия" in msg.text.lower():
-                await bot.send_message(chat_id, "Версия 0.6")
+                await bot.send_message(chat_id, "Версия 0.7")
             elif "gbladd" in msg.text.lower():
                 if msg.from_user.id == DanilID:
                     gbl.append(int(msg.text[7:]))
@@ -232,7 +233,22 @@ async def sms(msg: types.Message):
                 owners = str(await bot.get_chat_member(chat_id, msg.from_user.id))
                 if check in owners:
                     owner = msg.from_user.id
-                    await bot.send_message(chat_id, "Создатель установлен")
+                    ownerADD = chat_id, msg.from_user.id
+                    adminlist.append(ownerADD)
+                    await bot.send_message(chat_id, "Создатель установлен: " + owner)
+            elif msg.text.lower() == "добавить админа":
+                if msg.from_user.id == DanilID:
+                    adminaddID = chat_id, msg.reply_to_message.from_user.id
+                    adminlist.append(adminaddID)
+                    await bot.send_message(chat_id, "Администратор добавлен: " + str(msg.reply_to_message.from_user.id))
+            elif msg.text.lower() == "убрать админа":
+                if msg.from_user.id == DanilID:
+                    admindelID = chat_id, msg.reply_to_message.from_user.id
+                    adminlist.remove(admindelID)
+                    await bot.send_message(chat_id, "Администратор удалён: " + str(msg.reply_to_message.from_user.id))
+            elif msg.text.lower() == "список админов":
+                chat_admins = await bot.get_chat_administrators(chat_id)
+                await bot.send_message(chat_id, chat_admins)
             else:
                 pass
 
