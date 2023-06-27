@@ -1,14 +1,14 @@
 --
--- Файл сгенерирован с помощью SQLiteStudio v3.4.4 в Вт июн 27 12:15:11 2023
+-- Р¤Р°Р№Р» СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅ СЃ РїРѕРјРѕС‰СЊСЋ SQLiteStudio v3.4.4 РІ Р’С‚ РёСЋРЅ 27 12:17:11 2023
 --
--- Использованная кодировка текста: System
+-- РСЃРїРѕР»СЊР·РѕРІР°РЅРЅР°СЏ РєРѕРґРёСЂРѕРІРєР° С‚РµРєСЃС‚Р°: System
 --
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
--- Таблица: phone
+-- РўР°Р±Р»РёС†Р°: phone
 CREATE TABLE IF NOT EXISTS phone (number INTEGER PRIMARY KEY, namesurname TEXT, nickname TEXT, city TEXT, sex TEXT);
-INSERT INTO phone (number, namesurname, nickname, city, sex) VALUES (79000000000, 'Данил Пистолетов', '0', '0', '0');
+INSERT INTO phone (number, namesurname, nickname, city, sex) VALUES (79000000000, 'Danil Pistoletov', '0', '0', '0');
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
